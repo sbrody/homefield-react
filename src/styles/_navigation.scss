@@ -1,0 +1,32 @@
+.navigation {
+  .site-title {
+    background-color: #fff !important;
+  }
+  .site-logo {
+    max-width: 120px;
+    @media screen and (max-width: 767px) {
+      max-width: 80px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .primary-menu {
+      transform: translateY(-100vh);
+      transition: transform 0.8s ease-in;
+      background-color: #fff;
+      position: absolute;
+      top: 106px;
+      width: 100%;
+      z-index: -1;
+      &.active {
+        transform: translateY(0);
+        transition: transform 0.8s ease-in-out;
+      }
+    }
+  }
+  .menu-toggle {
+    position: absolute !important;
+    justify-content: flex-end;
+    height: 100%;
+    top: 0;
+  }
+}
