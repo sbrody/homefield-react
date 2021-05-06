@@ -1,0 +1,18 @@
+.top-nav {
+  color: #fff;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  position: relative;
+  z-index: 10000;
+  a {
+    color: #fff;
+  }
+
+  .ticker {
+    @media screen and (max-width: 767px) {
+      width: calc(100% - 120px);
+      line-height: 1 !important;
+      font-size: 0.9rem;
+    }
+  }
+}

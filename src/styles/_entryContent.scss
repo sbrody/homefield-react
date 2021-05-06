@@ -1,0 +1,31 @@
+.entry-content {
+  padding: 5rem 0 !important;
+  .container {
+    p {
+      font-size: 1.4rem;
+      line-height: 1.5;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .wp-block-columns {
+      margin: 4rem 0;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      .wp-block-column {
+        width: 100%;
+        margin-bottom: 4rem;
+        @media screen and (min-width: 768px) {
+          width: 30%;
+        }
+        figure {
+          margin: 0;
+        }
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import pages from '../../api/pages';
 import PageHeader from './PageHeader';
 import EntryContent from './EntryContent';
 
 
-const PageMain = ({ id, pageId }) => {
+const PageMain = ({ id, pageId, url }) => {
 
-
-
+    console.log(pageId);
     return (
-        <main>
-            <PageHeader pageId={pageId} />
-            <EntryContent pageId={pageId} />
+        <main className="ui pushable">
+            <PageHeader pageId={pageId} url={url} />
+            <EntryContent pageId={pageId} url={url} />
         </main>
     )
 }

@@ -15,24 +15,22 @@ const Footer = () => {
         )
     };
 
+
     useEffect(() => {
         getFooterData();
-        console.log(footerData);
     }, [])
 
     return (
         <footer>
             <div className="ui equal width grid">
-                <div className="column item">
-                    <img className="fluid" src={footerData.image_left} alt="" />
-                    <p>{footerData.text_left}</p>
+                <div className="column item bg-image-block" style={{ backgroundImage: `url(${footerData.image_left})` }}>
+                    <p><a href={footerData.link_left}>{footerData.text_left}</a></p>
                 </div>
-                <div className="column item">
-                    <img className="fluid" src={footerData.image_right} alt="" />
-                    <p>{footerData.text_right}</p>
+                <div className="column item bg-image-block" style={{ backgroundImage: `url(${footerData.image_right})` }}>
+                    <p><a href={footerData.link_right}>{footerData.text_right}</a></p>
                 </div>
             </div>
-            <div className="ui center aligned container segment">
+            <div className="ui center aligned container fluid segment lower-footer">
                 <span>&copy; {new Date().getFullYear()} Friends of Homefield Park</span>
                 <span><Link
                     to={

@@ -1,24 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useLocation, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, useLocation, useParams, withRouter } from 'react-router-dom';
 import Navigation from './Navigation';
 import '../App.scss';
-import PageHeader from './pageBody/PageHeader';
 import PageMain from './pageBody/PageMain';
 import Footer from './Footer';
+import UpperNavigation from './UpperNavigation';
+import BlogPage from './pageBody/BlogPage';
+import { createBrowserHistory } from 'history';
+
+const appHistory = createBrowserHistory();
 
 const App = () => {
     return (
-        <div>
-            <Router>
-                <Navigation />
-                <Switch>
-                    <Route path="/:id" children={<Child />} />
-                    <Route exact path="/" children={<Child />} />
-                </Switch>
-                <Footer />
-            </Router>
-
-        </div>
+        <Router history={appHistory}>
+            <UpperNavigation />
+            <Navigation />
+            <Switch>
+                <Route path="/:id" children={<Child />} />
+                <Route exact path="/" children={<Child />} />
+            </Switch>
+            <Footer />
+        </Router>
     )
 }
 
@@ -26,10 +28,15 @@ const Child = () => {
     let { id } = useParams();
     let location = useLocation();
     let pageId = location.objectId;
+    let url = location.pathname;
+    console.log(location);
+    console.log(url);
+    // apply different routing if page type is post
+    const childContent = url.includes('/news/') ? <BlogPage pageId={pageId} url={url} /> : <PageMain id={id} pageId={pageId} url={url} />
 
     return (
         <div>
-            <PageMain id={id} pageId={pageId} />
+            {childContent}
         </div>
     )
 }

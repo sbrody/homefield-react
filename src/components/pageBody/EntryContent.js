@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import parse from 'html-react-parser';
 import pages from '../../api/pages';
+import BlogList from './BlogList';
 
 
-const EntryContent = ({ pageId = 13 }) => {
+const EntryContent = ({ pageId, url }) => {
 
+    const fullUrl = `http://homefield.local${url}`;
     const [pageCopy, setPageCopy] = useState('');
+    const [dataLoaded, setDataLoaded] = useState(false);
 
     const getPage = () => {
-        pages.get(`${pageId}`).then((response) => {
-            setPageCopy(response.data.content.rendered);
+        pages.get().then((response) => {
+            response.data.filter(item => item.link === fullUrl).map((res) => {
+                console.log(res);
+                setPageCopy(res.content.rendered);
+                setDataLoaded(true);
+                return res;
+            });
         });
     }
 
@@ -17,9 +25,22 @@ const EntryContent = ({ pageId = 13 }) => {
         getPage();
     }, [pageId]);
 
+    const displayPageCopy = () => {
+        if (dataLoaded === true) {
+            return parse(pageCopy)
+        }
+        else {
+            return '..loading'
+        }
+    };
+
     return (
-        <div>
-            {parse(pageCopy)}
+        <div className="ui vertical stripe container entry-content segment">
+            <div className="ui container">
+                {displayPageCopy()}
+                <BlogList pageId={pageId} />
+            </div>
+
         </div>
     )
 };

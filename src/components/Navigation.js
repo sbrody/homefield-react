@@ -5,6 +5,7 @@ import siteLogo from '../api/siteLogo';
 import siteSettings from '../api/siteSettings';
 import menuIcon from '../components/images/menuIcon.png';
 
+
 const Navigation = () => {
 
     const [navItems, setNavItems] = useState([]);
@@ -26,7 +27,10 @@ const Navigation = () => {
                 }
                 className="item"
                 key={item.ID}
-                objectid={item.object_id}>
+                objectid={item.object_id}
+                // toggle mobile menu off if page reloads
+                onClick={() => setActive(menuClasses)}
+            >
                 {item.title}
             </Link>
         )
@@ -38,6 +42,7 @@ const Navigation = () => {
     useEffect(() => {
         importNav();
         getSiteLogo();
+        setActive(menuClasses);
     }, []);
 
     // Get the ID of the site logo from site settings and apply it to the list of site media
@@ -52,11 +57,13 @@ const Navigation = () => {
     const menuClassesActive = "right menu primary-menu active";
     const mobileNavToggle = () => {
         active === menuClasses ? setActive(menuClassesActive) : setActive(menuClasses);
-    }
+    };
+
+
 
 
     return (
-        <div className="ui menu top fixed navigation borderless stackable">
+        <div className="ui menu top navigation borderless stackable">
             <div className="item site-title">
                 <Link to="/">
                     <h1 className="visually-hidden">Friends of Homefield Park</h1>

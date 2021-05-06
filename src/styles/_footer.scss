@@ -1,0 +1,35 @@
+footer {
+  .bg-image-block {
+    height: 400px;
+    background-size: cover;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    p {
+      font-size: 1.6rem;
+      padding: 5px 10px;
+      font-weight: bold;
+      background-color: #ffcdcc;
+      a {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+    &:nth-of-type(2) {
+      p {
+        background-color: #ffce12;
+      }
+    }
+  }
+  .lower-footer {
+    span {
+      &::after {
+        content: " | ";
+      }
+      &:last-of-type {
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+}
