@@ -1,7 +1,8 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 const pages = axios.create({
-    baseURL: 'http://homefield.local/wp-json/wp/v2/pages',
+    baseURL: `${baseUrl}/wp-json/wp/v2/pages`,
     params: {
 
     }

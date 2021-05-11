@@ -1,8 +1,9 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 const acfOptions =
     axios.create({
-        baseURL: 'http://homefield.local/wp-json/acf/v3/options/options',
+        baseURL: `${baseUrl}/wp-json/acf/v3/options/options`,
         param: {
 
         }

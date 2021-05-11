@@ -1,6 +1,7 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
-const siteSettings = axios.get('http://homefield.local/wp-json/genesis-sample/v1/settings')
+const siteSettings = axios.get(`${baseUrl}/wp-json/genesis-sample/v1/settings`)
     .then((res) => {
         return res.data.custom_logo
     })

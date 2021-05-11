@@ -1,7 +1,8 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 const media = axios.create({
-    baseURL: 'http://homefield.local/wp-json/wp/v2/media',
+    baseURL: `${baseUrl}/wp-json/wp/v2/media`,
     params: {
 
     }

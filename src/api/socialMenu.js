@@ -1,7 +1,8 @@
 import axios from 'axios';
+import baseUrl from './baseUrl';
 
 const socialMenu = axios.create({
-    baseURL: 'http://homefield.local/wp-json/wp/v2/social-menu',
+    baseURL: `${baseUrl}/wp-json/wp/v2/social-menu`,
     params: {
 
     }
