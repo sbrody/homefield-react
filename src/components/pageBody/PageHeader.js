@@ -11,6 +11,7 @@ const PageHeader = ({ pageId, url }) => {
     const [dataLoaded, setDataLoaded] = useState(false);
 
     const fullUrl = `${baseUrl + url}`;
+    console.log(fullUrl);
     // responsive image functionality - can't use custom hook itself within callback
     // debounced resizing function to prevent too many calls to api on screen resize
     const width = useWindowWidth();

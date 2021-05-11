@@ -1,3 +1,3 @@
-const baseURL = 'https://homefield.simbrody.co.uk/';
+const baseURL = 'https://homefield.simbrody.co.uk';
 
 export default baseURL;
