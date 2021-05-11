@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import pages from '../../api/pages';
 import useWindowWidth from '../../hooks/useWindowWidth';
 import parse from 'html-react-parser';
-
+import baseUrl from '../../api/baseUrl';
 
 const PageHeader = ({ pageId, url }) => {
 
@@ -10,7 +10,7 @@ const PageHeader = ({ pageId, url }) => {
     const [headerImageUrl, setHeaderImageUrl] = useState('');
     const [dataLoaded, setDataLoaded] = useState(false);
 
-    const fullUrl = `http://homefield.local${url}`;
+    const fullUrl = `${baseUrl + url}`;
     // responsive image functionality - can't use custom hook itself within callback
     // debounced resizing function to prevent too many calls to api on screen resize
     const width = useWindowWidth();

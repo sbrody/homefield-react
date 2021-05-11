@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import posts from '../../api/posts';
 import parse from 'html-react-parser';
 import media from '../../api/media';
+import baseUrl from '../../api/baseUrl';
 
 const BlogPage = ({ pageId, url, pageType = 'post' }) => {
 
@@ -10,7 +11,7 @@ const BlogPage = ({ pageId, url, pageType = 'post' }) => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [imageLoaded, setImageLoaded] = useState(false);
 
-    const fullUrl = `http://homefield.local${url}`;
+    const fullUrl = `${baseUrl + url}`;
     console.log(fullUrl);
 
     const getPostData = () => posts.get().then((response) => {

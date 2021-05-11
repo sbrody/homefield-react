@@ -4,6 +4,7 @@ import navBar from '../api/navBar';
 import siteLogo from '../api/siteLogo';
 import siteSettings from '../api/siteSettings';
 import menuIcon from '../components/images/menuIcon.png';
+import baseUrl from '../api/baseUrl';
 
 
 const Navigation = () => {
@@ -21,7 +22,7 @@ const Navigation = () => {
                 // pass in objectId as part of 'to' attribute so it can be passed to router useLocation hook
                 to={
                     {
-                        pathname: `/${item.url.replace('http://homefield.local/', '')}`,
+                        pathname: `/${item.url.replace(baseUrl, '')}`,
                         objectId: item.object_id
                     }
                 }

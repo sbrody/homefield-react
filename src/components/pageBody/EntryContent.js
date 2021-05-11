@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import parse from 'html-react-parser';
 import pages from '../../api/pages';
 import BlogList from './BlogList';
-
+import baseUrl from '../../api/baseUrl';
 
 const EntryContent = ({ pageId, url }) => {
 
-    const fullUrl = `http://homefield.local${url}`;
+    const fullUrl = `${baseUrl + url}`;
     const [pageCopy, setPageCopy] = useState('');
     const [dataLoaded, setDataLoaded] = useState(false);
 

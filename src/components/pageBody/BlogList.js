@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import posts from '../../api/posts';
 import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
+import baseUrl from '../../api/baseUrl';
 
 const BlogList = ({ pageId, url }) => {
 
@@ -20,7 +21,7 @@ const BlogList = ({ pageId, url }) => {
                 <Link
                     to={
                         {
-                            pathname: `/${item.link.replace('http://homefield.local/', '')}`,
+                            pathname: `/${item.link.replace(baseUrl, '')}`,
                             objectId: item.id,
                             pageType: 'post'
                         }
