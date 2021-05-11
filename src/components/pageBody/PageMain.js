@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+
 import PageHeader from './PageHeader';
 import EntryContent from './EntryContent';
 

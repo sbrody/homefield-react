@@ -32,7 +32,7 @@ const PageHeader = ({ pageId, url }) => {
 
     useEffect(() => {
         getPage();
-    }, [pageId, width]);
+    }, [url, width]);
 
     const displayHeader = () => {
         if (dataLoaded === true) {
