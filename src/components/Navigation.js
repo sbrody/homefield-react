@@ -17,12 +17,13 @@ const Navigation = () => {
         response => setNavItems(response.data));
 
     const returnedNav = navItems.map((item) => {
+
         return (
             <Link
                 // pass in objectId as part of 'to' attribute so it can be passed to router useLocation hook
                 to={
                     {
-                        pathname: `/${item.url.replace(baseUrl, '')}`,
+                        pathname: `${item.url.replace(baseUrl, '')}`,
                         objectId: item.object_id
                     }
                 }
