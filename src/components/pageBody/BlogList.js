@@ -21,7 +21,7 @@ const BlogList = ({ pageId, url }) => {
                 <Link
                     to={
                         {
-                            pathname: `/${item.link.replace(baseUrl, '')}`,
+                            pathname: `${item.link.replace(baseUrl, '')}`,
                             objectId: item.id,
                             pageType: 'post'
                         }
