@@ -7,19 +7,22 @@ import Footer from './Footer';
 import UpperNavigation from './UpperNavigation';
 import BlogPage from './pageBody/BlogPage';
 import { createBrowserHistory } from 'history';
+import ScrollToTop from 'react-router-scroll-top';
 
 const appHistory = createBrowserHistory();
 
 const App = () => {
     return (
         <Router history={appHistory}>
-            <UpperNavigation />
-            <Navigation />
-            <Switch>
-                <Route path="/:id" children={<Child />} />
-                <Route exact path="/" children={<Child />} />
-            </Switch>
-            <Footer />
+            <ScrollToTop>
+                <UpperNavigation />
+                <Navigation />
+                <Switch>
+                    <Route path="/:id" children={<Child />} />
+                    <Route exact path="/" children={<Child />} />
+                </Switch>
+                <Footer />
+            </ScrollToTop>
         </Router>
     )
 }
