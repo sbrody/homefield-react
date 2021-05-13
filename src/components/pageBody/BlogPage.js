@@ -46,7 +46,9 @@ const BlogPage = ({ pageId, url, pageType = 'post' }) => {
             return <h1>{parse(postData.title.rendered)}</h1>
         }
         else {
-            return '..loading';
+            return (
+                <img className="loading" src="/loading.svg" alt="loading" />
+            )
         }
     }
 
@@ -55,7 +57,7 @@ const BlogPage = ({ pageId, url, pageType = 'post' }) => {
             return <img src={imageData.media_details.sizes.full.source_url} alt={imageData.alt_text}></img>
         }
         else {
-            return '..loading';
+            return <img className="loading" src="/loading.svg" alt="loading" />;
         }
     }
 
@@ -64,7 +66,7 @@ const BlogPage = ({ pageId, url, pageType = 'post' }) => {
             return <div>{parse(postData.content.rendered)}</div>
         }
         else {
-            return '..loading';
+            return <img class="loading" src="/loading.svg" alt="loading" />;
         }
     }
 

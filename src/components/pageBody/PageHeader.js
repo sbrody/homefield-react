@@ -39,7 +39,7 @@ const PageHeader = ({ pageId, url }) => {
             return parse(pageTitle)
         }
         else {
-            return 'Loading...'
+            return <img className="loading" src="/loading.svg" alt="loading" />
         }
     };
 

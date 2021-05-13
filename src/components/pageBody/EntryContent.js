@@ -30,7 +30,7 @@ const EntryContent = ({ pageId, url }) => {
             return parse(pageCopy)
         }
         else {
-            return '..loading'
+            return <img class="loading" src="/loading.svg" alt="loading" />
         }
     };
 
