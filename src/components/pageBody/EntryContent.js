@@ -10,20 +10,21 @@ const EntryContent = ({ pageId, url }) => {
     const [pageCopy, setPageCopy] = useState('');
     const [dataLoaded, setDataLoaded] = useState(false);
 
-    const getPage = () => {
-        pages.get().then((response) => {
-            response.data.filter(item => item.link === fullUrl).map((res) => {
-                console.log(res);
-                setPageCopy(res.content.rendered);
-                setDataLoaded(true);
-                return res;
-            });
-        });
-    }
+
 
     useEffect(() => {
+        const getPage = () => {
+            pages.get().then((response) => {
+                response.data.filter(item => item.link === fullUrl).map((res) => {
+                    console.log(res);
+                    setPageCopy(res.content.rendered);
+                    setDataLoaded(true);
+                    return res;
+                });
+            });
+        }
         getPage();
-    }, [pageId]);
+    }, [pageId, fullUrl]);
 
     const displayPageCopy = () => {
         if (dataLoaded === true) {

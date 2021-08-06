@@ -17,22 +17,24 @@ const PageHeader = ({ pageId, url }) => {
     const width = useWindowWidth();
 
 
-    // copy improved paging functionality using url from entrycontent
-    const getPage = () => {
-        pages.get().then((response) => {
-            response.data.filter(item => item.link === fullUrl).map((res) => {
-                setPageTitle(res.title.rendered);
-                setDataLoaded(true);
-                if (res.acf.header_image) {
-                    width >= 760 ? setHeaderImageUrl(res.acf.header_image.url) : setHeaderImageUrl(res.acf.header_image.sizes.medium_large)
-                };
-            })
-        });
-    };
+
 
     useEffect(() => {
+        // copy improved paging functionality using url from entrycontent
+        const getPage = () => {
+            pages.get().then((response) => {
+                response.data.filter(item => item.link === fullUrl).map((res) => {
+                    setPageTitle(res.title.rendered);
+                    setDataLoaded(true);
+                    if (res.acf.header_image) {
+                        width >= 760 ? setHeaderImageUrl(res.acf.header_image.url) : setHeaderImageUrl(res.acf.header_image.sizes.medium_large)
+                    };
+                    return null;
+                })
+            });
+        };
         getPage();
-    }, [url, width]);
+    }, [width, fullUrl]);
 
     const displayHeader = () => {
         if (dataLoaded === true) {

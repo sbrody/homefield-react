@@ -9,12 +9,6 @@ const BlogList = ({ pageId, url }) => {
     const [blogListData, setBlogListData] = useState([]);
 
 
-    const getBlogListData = () => {
-        posts.get().then((response) => {
-            setBlogListData(response.data);
-        })
-    };
-
     const mapData = blogListData.map((item) => {
         return (
             <div className="wp-block-column">
@@ -36,8 +30,15 @@ const BlogList = ({ pageId, url }) => {
     });
 
     useEffect(() => {
+        const getBlogListData = () => {
+            posts.get().then((response) => {
+                setBlogListData(response.data);
+            })
+        };
         getBlogListData();
+
         listOfBlogs();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const listOfBlogs = () => {

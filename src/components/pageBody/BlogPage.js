@@ -14,32 +14,32 @@ const BlogPage = ({ pageId, url, pageType = 'post' }) => {
     const fullUrl = `${baseUrl + url}`;
     console.log(fullUrl);
 
-    const getPostData = () => posts.get().then((response) => {
-        console.log(response);
-        response.data.filter(item => item.link === fullUrl).map((res) => {
-            console.log(res);
-            setPostData(res);
-            setDataLoaded(true);
-        });
-    });
 
-    const getImageData = () => {
-        if (dataLoaded) {
-            media.get(`/${postData.featured_media}`).then((response) => {
-                console.log(response.data);
-                setImageData(response.data);
-                setImageLoaded(true);
+    useEffect(() => {
+        const getPostData = () => posts.get().then((response) => {
+            console.log(response);
+            response.data.filter(item => item.link === fullUrl).map((res) => {
+                console.log(res);
+                setPostData(res);
+                setDataLoaded(true);
+                return null;
             });
-        };
-    }
-
-    useEffect(() => {
+        });
         getPostData();
-    }, [url]);
+    }, [url, fullUrl]);
 
     useEffect(() => {
+        const getImageData = () => {
+            if (dataLoaded) {
+                media.get(`/${postData.featured_media}`).then((response) => {
+                    console.log(response.data);
+                    setImageData(response.data);
+                    setImageLoaded(true);
+                });
+            };
+        }
         getImageData();
-    }, [dataLoaded]);
+    }, [dataLoaded, postData]);
 
     const blogHeader = () => {
         if (dataLoaded) {
